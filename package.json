@@ -1,0 +1,31 @@
+{
+    "name": "text-table",
+    "version": "0.0.0",
+    "description": "borderless text tables suitable for printing to stdout",
+    "main": "index.js",
+    "devDependencies": {
+        "tap": "~0.4.0",
+        "tape": "~1.0.2"
+    },
+    "scripts": {
+        "test": "tap test/*.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/substack/text-table.git"
+    },
+    "homepage": "https://github.com/substack/text-table",
+    "keywords": [
+        "text",
+        "table",
+        "ascii",
+        "rows",
+        "tabular"
+    ],
+    "author": {
+        "name": "James Halliday",
+        "email": "mail@substack.net",
+        "url": "http://substack.net"
+    },
+    "license": "MIT"
+}
