@@ -45,6 +45,6 @@ module.exports = function (rows_, opts) {
             }
             
             return c + s;
-        }).join(hsep).trim();
+        }).join(hsep).replace(/\s+$/, '');
     }).join('\n');
 };
