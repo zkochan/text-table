@@ -1,6 +1,6 @@
 module.exports = function (rows, opts) {
     if (!opts) opts = {};
-    var hsep = opts.hsep === undefined ? ' ' : opts.hsep;
+    var hsep = opts.hsep === undefined ? '  ' : opts.hsep;
     var align = opts.align || [];
     
     var sizes = rows.reduce(function (acc, row) {
