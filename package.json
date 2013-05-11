@@ -1,7 +1,7 @@
 {
     "name": "text-table",
     "version": "0.0.1",
-    "description": "borderless text tables suitable for printing to stdout",
+    "description": "borderless text tables with alignment",
     "main": "index.js",
     "devDependencies": {
         "tap": "~0.4.0",
@@ -18,6 +18,7 @@
     "keywords": [
         "text",
         "table",
+        "align",
         "ascii",
         "rows",
         "tabular"
