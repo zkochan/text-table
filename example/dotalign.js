@@ -5,5 +5,5 @@ var t = table([
     [ 'foo', '1006' ],
     [ 'bar', '45.6' ],
     [ 'baz', '123.' ]
-], { align: [ 'l', 'r.' ] });
+], { align: [ 'l', '.' ] });
 console.log(t);

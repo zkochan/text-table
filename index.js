@@ -13,7 +13,7 @@ module.exports = function (rows_, opts) {
     
     var rows = rows_.map(function (row) {
         return row.map(function (c, ix) {
-            if (align[ix] === 'r.') {
+            if (align[ix] === '.') {
                 var size = dotsizes[ix] + (/\./.test(c) ? 1 : 2)
                     - (String(c).split('.')[1] || '').length
                 ;
@@ -34,7 +34,7 @@ module.exports = function (rows_, opts) {
     return rows.map(function (row) {
         return row.map(function (c, ix) {
             var s = Array(sizes[ix] - c.length + 1).join(' ');
-            if (align[ix] === 'r' || align[ix] === 'r.') {
+            if (align[ix] === 'r' || align[ix] === '.') {
                 return s + c;
             }
             if (align[ix] === 'c') {
