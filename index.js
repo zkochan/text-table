@@ -14,6 +14,7 @@ module.exports = function (rows, opts) {
         return row.map(function (c, ix) {
             var s = Array(sizes[ix] - c.length + 1).join(' ');
             if (align[ix] === 'r') {
+                return s + c;
             }
             if (align[ix] === 'r.') {
             }
