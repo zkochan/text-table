@@ -33,11 +33,15 @@ module.exports = function (rows_, opts) {
     
     return rows.map(function (row) {
         return row.map(function (c, ix) {
-            var s = Array(sizes[ix] - c.length + 1).join(' ');
+            var n = sizes[ix] - c.length;
+            var s = Array(n + 1).join(' ');
             if (align[ix] === 'r' || align[ix] === '.') {
                 return s + c;
             }
             if (align[ix] === 'c') {
+                return Array(Math.ceil(n / 2 + 1)).join(' ')
+                    + c + Array(Math.floor(n / 2 + 1)).join(' ')
+                ;
             }
             
             return c + s;
