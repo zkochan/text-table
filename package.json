@@ -1,6 +1,6 @@
 {
     "name": "text-table",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "borderless text tables suitable for printing to stdout",
     "main": "index.js",
     "devDependencies": {

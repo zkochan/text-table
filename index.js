@@ -5,7 +5,7 @@ module.exports = function (rows_, opts) {
     
     var dotsizes = rows_.reduce(function (acc, row) {
         row.forEach(function (c, ix) {
-            var n = String(c.split('.')[1] || '').length;
+            var n = (String(c).split('.')[1] || '').length;
             if (!acc[ix] || n > acc[ix]) acc[ix] = n;
         });
         return acc;
@@ -33,8 +33,8 @@ module.exports = function (rows_, opts) {
     
     return rows.map(function (row) {
         return row.map(function (c, ix) {
-            var n = sizes[ix] - c.length;
-            var s = Array(n + 1).join(' ');
+            var n = (sizes[ix] - String(c).length) || 0;
+            var s = Array(Math.max(n + 1, 1)).join(' ');
             if (align[ix] === 'r' || align[ix] === '.') {
                 return s + c;
             }
