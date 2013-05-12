@@ -5,17 +5,20 @@ module.exports = function (rows_, opts) {
     
     var dotsizes = rows_.reduce(function (acc, row) {
         row.forEach(function (c, ix) {
-            var n = (String(c).split('.')[1] || '').length;
+            var n = (/\.[^.]*$/.exec(c) || { index: -1 }).index + 1;
             if (!acc[ix] || n > acc[ix]) acc[ix] = n;
         });
         return acc;
     }, []);
     
     var rows = rows_.map(function (row) {
-        return row.map(function (c, ix) {
+        return row.map(function (c_, ix) {
+            var c = String(c_);
             if (align[ix] === '.') {
+                var index = c.indexOf('.');
+                if (index < 0) index = c.length - 1;
                 var size = dotsizes[ix] + (/\./.test(c) ? 1 : 2)
-                    - (String(c).split('.')[1] || '').length
+                    - (c.length - index)
                 ;
                 return c + Array(size).join(' ');
             }
