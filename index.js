@@ -5,7 +5,7 @@ module.exports = function (rows_, opts) {
     
     var dotsizes = rows_.reduce(function (acc, row) {
         row.forEach(function (c, ix) {
-            var n = (/\.[^.]*$/.exec(c) || { index: -1 }).index + 1;
+            var n = dotindex(c);
             if (!acc[ix] || n > acc[ix]) acc[ix] = n;
         });
         return acc;
@@ -15,8 +15,7 @@ module.exports = function (rows_, opts) {
         return row.map(function (c_, ix) {
             var c = String(c_);
             if (align[ix] === '.') {
-                var index = c.indexOf('.');
-                if (index < 0) index = c.length - 1;
+                var index = dotindex(c);
                 var size = dotsizes[ix] + (/\./.test(c) ? 1 : 2)
                     - (c.length - index)
                 ;
@@ -51,3 +50,8 @@ module.exports = function (rows_, opts) {
         }).join(hsep).replace(/\s+$/, '');
     }).join('\n');
 };
+
+function dotindex (c) {
+    var m = /\.[^.]*$/.exec(c);
+    return m ? m.index + 1 : c.length;
+}
