@@ -4,6 +4,8 @@ generate borderless text table strings suitable for printing to stdout
 
 [![build status](https://secure.travis-ci.org/substack/text-table.png)](http://travis-ci.org/substack/text-table)
 
+[![browser support](https://ci.testling.com/substack/text-table.png)](http://ci.testling.com/substack/text-table)
+
 # example
 
 ## default align
