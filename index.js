@@ -3,16 +3,16 @@ module.exports = function (rows_, opts) {
     var hsep = opts.hsep === undefined ? '  ' : opts.hsep;
     var align = opts.align || [];
     
-    var dotsizes = rows_.reduce(function (acc, row) {
-        row.forEach(function (c, ix) {
+    var dotsizes = reduce(rows_, function (acc, row) {
+        forEach(row, function (c, ix) {
             var n = dotindex(c);
             if (!acc[ix] || n > acc[ix]) acc[ix] = n;
         });
         return acc;
     }, []);
     
-    var rows = rows_.map(function (row) {
-        return row.map(function (c_, ix) {
+    var rows = map(rows_, function (row) {
+        return map(row, function (c_, ix) {
             var c = String(c_);
             if (align[ix] === '.') {
                 var index = dotindex(c);
@@ -25,16 +25,16 @@ module.exports = function (rows_, opts) {
         });
     });
     
-    var sizes = rows.reduce(function (acc, row) {
-        row.forEach(function (c, ix) {
+    var sizes = reduce(rows, function (acc, row) {
+        forEach(row, function (c, ix) {
             var n = String(c).length;
             if (!acc[ix] || n > acc[ix]) acc[ix] = n;
         });
         return acc;
     }, []);
     
-    return rows.map(function (row) {
-        return row.map(function (c, ix) {
+    return map(rows, function (row) {
+        return map(row, function (c, ix) {
             var n = (sizes[ix] - String(c).length) || 0;
             var s = Array(Math.max(n + 1, 1)).join(' ');
             if (align[ix] === 'r' || align[ix] === '.') {
@@ -54,4 +54,30 @@ module.exports = function (rows_, opts) {
 function dotindex (c) {
     var m = /\.[^.]*$/.exec(c);
     return m ? m.index + 1 : c.length;
+}
+
+function reduce (xs, f, init) {
+    if (xs.reduce) return xs.reduce(f, init);
+    var i = 0;
+    var acc = arguments.length >= 3 ? init : xs[i++];
+    for (; i < xs.length; i++) {
+        f(acc, xs[i], i);
+    }
+    return acc;
+}
+
+function forEach (xs, f) {
+    if (xs.forEach) return xs.forEach(f);
+    for (var i = 0; i < xs.length; i++) {
+        f.call(xs, xs[i], i);
+    }
+}
+
+function map (xs, f) {
+    if (xs.map) return xs.map(f);
+    var res = [];
+    for (var i = 0; i < xs.length; i++) {
+        res.push(f.call(xs, xs[i], i));
+    }
+    return res;
 }
