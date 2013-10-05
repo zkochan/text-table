@@ -123,7 +123,9 @@ npm install text-table
 
 # Use with ANSI-colors
 
-Since the string length of ANSI color schemes does not equal the length JavaScript sees internally it is necessary to pass the a custom string length calculator during the main function call.
+Since the string length of ANSI color schemes does not equal the length
+JavaScript sees internally it is necessary to pass the a custom string length
+calculator during the main function call.
 
 See the `test/ansi-colors.js` file for an example.
 
