@@ -1,29 +1,29 @@
 var test = require('tape');
 var table = require('../');
-var color = require('cli-color');
-var ansiTrim = require('cli-color/lib/trim');
+var chalk = require('chalk');
+var stripAnsi = require('strip-ansi');
 
 test('center', function (t) {
     t.plan(1);
     var opts = {
         align: [ 'l', 'c', 'l' ],
-        stringLength: function(s) { return ansiTrim(s).length }
+        stringLength: function(s) { return stripAnsi(s).length }
     };
     var s = table([
         [
-            color.red('Red'), color.green('Green'), color.blue('Blue')
+            chalk.red('Red'), chalk.green('Green'), chalk.blue('Blue')
         ],
         [
-            color.bold('Bold'), color.underline('Underline'),
-            color.italic('Italic')
+            chalk.bold('Bold'), chalk.underline('Underline'),
+            chalk.italic('Italic')
         ],
         [
-            color.inverse('Inverse'), color.strike('Strike'),
-            color.blink('Blink')
+            chalk.inverse('Inverse'), chalk.strikethrough('Strike'),
+            'Blink'
         ],
         [ 'bar', '45', 'lmno' ]
     ], opts);
-    t.equal(ansiTrim(s), [
+    t.equal(stripAnsi(s), [
         'Red        Green    Blue',
         'Bold     Underline  Italic',
         'Inverse    Strike   Blink',

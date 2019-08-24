@@ -1,4 +1,11 @@
 language: node_js
+cache:
+  npm: false
 node_js:
-  - "0.8"
-  - "0.10"
+  - "8.15"
+  - "10"
+  - "12"
+before_install:
+  - curl -L https://unpkg.com/@pnpm/self-installer | node
+install:
+  - pnpm install

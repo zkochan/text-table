@@ -1,17 +1,21 @@
-# text-table
+# @zkochan/text-table
 
-generate borderless text table strings suitable for printing to stdout
+> Generate borderless text table strings suitable for printing to stdout
 
-[![build status](https://secure.travis-ci.org/substack/text-table.png)](http://travis-ci.org/substack/text-table)
+[![build status](https://secure.travis-ci.org/zkochan/text-table.png)](http://travis-ci.org/zkochan/text-table)
 
-[![browser support](https://ci.testling.com/substack/text-table.png)](http://ci.testling.com/substack/text-table)
+## Installation
+
+```
+pnpm add @zkochan/text-table
+```
 
 # example
 
 ## default align
 
 ``` js
-var table = require('text-table');
+var table = require('@zkochan/text-table');
 var t = table([
     [ 'master', '0123456789abcdef' ],
     [ 'staging', 'fedcba9876543210' ]
@@ -27,7 +31,7 @@ staging  fedcba9876543210
 ## left-right align
 
 ``` js
-var table = require('text-table');
+var table = require('@zkochan/text-table');
 var t = table([
     [ 'beep', '1024' ],
     [ 'boop', '33450' ],
@@ -47,7 +51,7 @@ bar      45
 ## dotted align
 
 ``` js
-var table = require('text-table');
+var table = require('@zkochan/text-table');
 var t = table([
     [ 'beep', '1024' ],
     [ 'boop', '334.212' ],
@@ -69,7 +73,7 @@ baz    123.
 ## centered
 
 ``` js
-var table = require('text-table');
+var table = require('@zkochan/text-table');
 var t = table([
     [ 'beep', '1024', 'xyz' ],
     [ 'boop', '3388450', 'tuv' ],
@@ -89,7 +93,7 @@ bar      45    lmno
 # methods
 
 ``` js
-var table = require('text-table')
+var table = require('@zkochan/text-table')
 ```
 
 ## var s = table(rows, opts={})
